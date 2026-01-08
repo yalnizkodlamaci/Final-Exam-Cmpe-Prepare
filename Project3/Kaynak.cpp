@@ -22,7 +22,7 @@ int main()
     int row = 0;
     int column = 0;
 
-    // Not Giriş Kısmı
+ 
     do
     {
         cout << count + 1 << ". Notu Gir: ";
@@ -31,7 +31,7 @@ int main()
         count++;
     } while (count < 3);
 
-    // Menü Döngüsü
+  
     do 
     {
         cout << "\n------------------------" << endl;
@@ -70,16 +70,16 @@ int main()
             {
                 cout << fixed;
                 cout << "\n --- " << (i+1) << ". Not icin Hangi Katsayiyi Uygulamak Istiyorsun? --- \n" << endl;
-                cout << setw(18) << "--- (1,2) ---" << endl; // Matrisin 1. satiri
-                cout << setw(18) << "--- (3,4) ---" << endl; // Matrisin 2. satiri
+                cout << setw(18) << "--- (1,2) ---" << endl;
+                cout << setw(18) << "--- (3,4) ---" << endl; 
                 
-                // Not: Kullanıcı 0 veya 1 girmeli (Dizi indeksi olduğu için)
+               
                 cout << "Satir Sec (0 veya 1): ";
                 cin >> row;
                 cout << "Sutun Sec (0 veya 1): ";
                 cin >> column;
 
-                // Basit bir hata kontrolü eklemek iyi olabilir ama orjinal yapını korudum.
+        
                 katsayiliPuan = katsayilar[row][column] * notlar[i];
                 katsayiliNotlar.push_back(katsayiliPuan);
                 
@@ -116,3 +116,4 @@ int puanHesapla(int puan, int zorluk)
 {
     return puan * zorluk;
 }
+

@@ -5,8 +5,6 @@
 
 using namespace std;
 
-
-
 void bonusEkle(int& puan);
 int puanHesapla(int puan);
 int puanHesapla(int puan, int zorluk);
@@ -23,25 +21,27 @@ int main()
     int zorluk = 0;
     int row = 0;
     int column = 0;
- 
+
+    // Not GiriÅŸ KÄ±smÄ±
     do
     {
-        cout << count + 1 << "\n . Notu Gir : \n" << endl;
+        cout << count + 1 << ". Notu Gir: ";
         cin >> Add;
         notlar.push_back(Add);
         count++;
     } while (count < 3);
 
+    // MenÃ¼ DÃ¶ngÃ¼sÃ¼
     do 
     {
-        cout << "------------------------" << endl;
-        cout << "1. Notları Listele" << endl;
+        cout << "\n------------------------" << endl;
+        cout << "1. Notlari Listele" << endl;
         cout << "2. Bonus Uygula" << endl;
-        cout << "3. Katsayıları Hesapla" << endl;
-        cout << "0. Çıkış" << endl;
+        cout << "3. Katsayilari Hesapla" << endl;
+        cout << "0. Cikis" << endl;
         cout << "------------------------" << endl;
 
-        cout << "Seçiminiz : ";
+        cout << "Seciminiz: ";
         cin >> choise;
 
         switch (choise)
@@ -50,51 +50,52 @@ int main()
             cout << "\n --- Not Listesi --- \n" << endl;
             for (int i = 0; i < notlar.size(); i++)
             {
-                cout << i + 1 << ". Not :" << notlar[i] << endl;
+                cout << i + 1 << ". Not: " << notlar[i] << endl;
             }
             break;
-        case 2:
-            cout << "\n --- Bonus İşlemi --- \n" << endl;
 
+        case 2:
+            cout << "\n --- Bonus Islemi --- \n" << endl;
             for (int i = 0; i < notlar.size(); i++)
             {
                 bonusEkle(notlar[i]);
             }
-            cout << "Bonus İşlemi Tamamlandı." << endl;
+            cout << "Bonus Islemi Tamamlandi." << endl;
             break;
+
         case 3:
-            cout << "\n --- Katsayili Puan \n" << endl;
-            //İlk başta notu belirlemeliyiz yani notlar dizisinden başlamalıyız gezmeye ve ilk indexdeki notun katsayisini belirlemeliyiz.
-            //bu yüzden kişiye hangi row ve hangi kolondaki katsayı uygulanmasını istiyorsak seçtirmeliyiz.
+            cout << "\n --- Katsayili Puan --- \n" << endl;
+            
             for (int i = 0; i < notlar.size(); i++)
             {
                 cout << fixed;
-                cout << "\n --- Hangi Katsayıyı Uygulamak İstiyorsun ? ---  \n" << endl;
-                cout << setw(18) <<"\n --- (1,2) ---  \n" << endl;
-                cout << setw(18) <<"\n --- (3,4) ---  \n" << endl;
-                cout << "Satır Seç" << endl;
+                cout << "\n --- " << (i+1) << ". Not icin Hangi Katsayiyi Uygulamak Istiyorsun? --- \n" << endl;
+                cout << setw(18) << "--- (1,2) ---" << endl; // Matrisin 1. satiri
+                cout << setw(18) << "--- (3,4) ---" << endl; // Matrisin 2. satiri
+                
+                // Not: KullanÄ±cÄ± 0 veya 1 girmeli (Dizi indeksi olduÄŸu iÃ§in)
+                cout << "Satir Sec (0 veya 1): ";
                 cin >> row;
-                cout << "Sütun Seç : " << endl;
+                cout << "Sutun Sec (0 veya 1): ";
                 cin >> column;
 
+                // Basit bir hata kontrolÃ¼ eklemek iyi olabilir ama orjinal yapÄ±nÄ± korudum.
                 katsayiliPuan = katsayilar[row][column] * notlar[i];
                 katsayiliNotlar.push_back(katsayiliPuan);
+                
+                cout << "Yeni Puan: " << katsayiliPuan << endl;
             }
             break;
-            break;
+
         case 0:
-            cout << "Çıkış Yapılıyor" << endl;
+            cout << "Cikis Yapiliyor..." << endl;
             break;
-           
+
         default:
-            cout << "Hatalı Seçim Yeniden Dene" << endl;
+            cout << "Hatali Secim, Yeniden Dene." << endl;
         }
-    } while (choise != 0 );
+    } while (choise != 0);
 
-
-   
-
-    
     return 0;
 }
 
@@ -102,16 +103,16 @@ void bonusEkle(int& puan)
 {
     if(puan < 50)
     {
-        puan + 10;
+        puan += 10; 
     }
-};
+}
 
 int puanHesapla(int puan)
 {
     return puan;
-};
+}
 
 int puanHesapla(int puan, int zorluk)
 {
     return puan * zorluk;
-};
+}
